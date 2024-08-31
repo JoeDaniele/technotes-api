@@ -7,7 +7,7 @@ const { logger } = require('./middleware/logger'); //importing logger
 const errorHandler = require('./middleware/errorHandler');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-//////////const corsOptions = require('./config/corsOptions'); //earlier Cannot find module './config/cors-options' -- didnt locate properly
+const corsOptions = require('./config/corsOptions'); //earlier Cannot find module './config/cors-options' -- didnt locate properly
 const connectDB = require('./config/dbConn');
 const mongoose = require('mongoose');
 const { logEvents } = require('./middleware/logger');
@@ -19,7 +19,7 @@ connectDB();
 
 app.use(logger);
 
-///////////////app.use(cors(corsOptions)); //Needs security, otherwise our api is open to other origins. corsOptions handles that security
+app.use(cors(corsOptions)); //Needs security, otherwise our api is open to other origins. corsOptions handles that security
 
 app.use(express.json()); // this will let our app receive and parse json data
 
